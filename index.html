@@ -18,7 +18,12 @@
   <body>
     <div id="app">
       <site-navbar></site-navbar>
-      index
+      <div class="row justify-content-md-center">
+        <quote-card></quote-card>
+        <quote-card></quote-card>
+        <quote-card></quote-card>
+        <quote-card></quote-card>
+      </div>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
@@ -26,5 +31,9 @@
 
     <!-- Load Navbar Component-->
     <script src="navbar.js"></script>
+    <script src="quoteCards.js"></script>
+    <script>
+      var app = new Vue({el: '#app'})
+    </script>
   </body>
 </html>

@@ -46,5 +46,3 @@ Vue.component('site-navbar', {
   </nav>
   `
 })
-
-var app = new Vue({el: '#app'})

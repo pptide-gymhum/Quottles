@@ -1,11 +1,9 @@
 // Define componetent quote card
 Vue.component('quote-card', {
-  data: function () {
-    return {
-      title: "Titel",
-      content: "Inhalt",
-    }
-  },
+  props: [
+    "title",
+    "content",
+  ],
   template: `
   <div class="col col-md-auto">
     <div class="card m-3" style="width: 20rem;">

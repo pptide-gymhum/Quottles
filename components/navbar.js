@@ -1,9 +1,19 @@
+import { signIn, getUser } from "../firebase.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+
 // Define componetent Navbar
 Vue.component('site-navbar', {
-  data: function () {
-    return {
-      //count: 0
+  computed: {
+    user: function () {
+      const auth = getAuth();
+      console.log(auth.currentUser);
+      return auth.currentUser;
     }
+  },
+  methods: {
+    signIn: function() {
+      signIn()
+    },
   },
   template: `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,10 +49,16 @@ Vue.component('site-navbar', {
           <input class="form-control me-2" type="search" placeholder="Suchen...">
           <button class="btn btn-outline-success me-3" type="submit">Suchen</button>
         </form>
-        <button class="btn btn-outline-success me-2" href="#" type="button">Registrieren</button>
-        <button class="btn btn-sm btn-outline-secondary" href="#" type="button">Anmelden</button>
+        <template v-if="!user">
+          <button class="btn btn-outline-success me-2" href="#" type="button">Registrieren</button>
+          <button class="btn btn-sm btn-outline-secondary" href="#" type="button" @click="signIn">Anmelden</button>
+        </template>
+        <template v-else>
+          {{ user }}
+        </template>
       </div>
     </div>
+    {{ user }}
   </nav>
   `
 })

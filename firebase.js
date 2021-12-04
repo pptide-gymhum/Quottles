@@ -10,13 +10,13 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCV14olxaF9d-UKQAYf5ukrl9t_dzAD3i0",
-  authDomain: "playground-7af0b.firebaseapp.com",
-  projectId: "playground-7af0b",
-  storageBucket: "playground-7af0b.appspot.com",
-  messagingSenderId: "730051857505",
-  appId: "1:730051857505:web:850737d6f1aa01ab53ae20",
-  measurementId: "G-9V5V9TSD73"
+  apiKey: "AIzaSyBFM3PhupRpf01rElZy5CeJopMLGDhfEFk",
+  authDomain: "quottle-2e5cd.firebaseapp.com",
+  projectId: "quottle-2e5cd",
+  storageBucket: "quottle-2e5cd.appspot.com",
+  messagingSenderId: "713865507104",
+  appId: "1:713865507104:web:df7a38bb5fc40cf8956745",
+  measurementId: "G-10317Y4VFS"
 };
 
 // Initialize Firebase
@@ -36,7 +36,7 @@ export function signIn() {
     // The signed-in user info.
     const user = result.user;
     console.log(user)
-    // ...
+    
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -45,7 +45,6 @@ export function signIn() {
     const email = error.email;
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
   });
 }
 

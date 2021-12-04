@@ -1,19 +1,26 @@
-import { signIn, getUser } from "../firebase.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+import { signIn, logOut } from "../firebase.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 
 // Define componetent Navbar
 Vue.component('site-navbar', {
-  computed: {
-    user: function () {
-      const auth = getAuth();
-      console.log(auth.currentUser);
-      return auth.currentUser;
+  data: function() {
+    return {
+      user: null
     }
   },
   methods: {
     signIn: function() {
       signIn()
     },
+    signOut: function() {
+      logOut()
+    },
+  },
+  created: function() {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      this.user = user
+    });
   },
   template: `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,15 +57,15 @@ Vue.component('site-navbar', {
           <button class="btn btn-outline-success me-3" type="submit">Suchen</button>
         </form>
         <template v-if="!user">
-          <button class="btn btn-outline-success me-2" href="#" type="button">Registrieren</button>
-          <button class="btn btn-sm btn-outline-secondary" href="#" type="button" @click="signIn">Anmelden</button>
+          <button class="btn btn-outline-success me-2" type="button" @click="signIn">Registrieren</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button" @click="signIn">Anmelden</button>
         </template>
         <template v-else>
-          {{ user }}
+        <button class="btn btn-sm btn-outline-secondary" type="button" @click="signOut">Abmelden</button>
         </template>
       </div>
     </div>
-    {{ user }}
+    <!-- {{ user }} -->
   </nav>
   `
 })

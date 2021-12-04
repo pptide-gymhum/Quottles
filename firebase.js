@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, onAuthStateChanged, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 //import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
@@ -26,8 +26,6 @@ const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth()
 
-var webUser = "Test"
-
 export function signIn() {
   console.log("sign In")
   signInWithPopup(auth, provider)
@@ -51,10 +49,11 @@ export function signIn() {
   });
 }
 
-export function getUser() {
-  return webUser
+export function logOut() {
+  console.log("sign Out");
+  signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
 }
-
-onAuthStateChanged(auth, (user) => {
-  webUser = user
-});

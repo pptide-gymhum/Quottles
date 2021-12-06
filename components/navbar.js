@@ -3,6 +3,9 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 
 // Define componetent Navbar
 Vue.component('site-navbar', {
+  props: [
+    "site"
+  ],
   data: function() {
     return {
       user: null
@@ -17,6 +20,13 @@ Vue.component('site-navbar', {
     },
   },
   created: function() {
+    $(function(){
+      console.log($("#navbar-"+this.site));
+      $("#navbar-"+this.site).addClass("active")
+    })
+    // TODO: Highlight active site
+    
+
     const auth = getAuth()
     onAuthStateChanged(auth, (user) => {
       console.log(user);
@@ -33,7 +43,7 @@ Vue.component('site-navbar', {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Startseite</a>
+            <a id="navbar-homepage" class="nav-link" aria-current="page" href="index.html">Startseite</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="quotes.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

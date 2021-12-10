@@ -6,8 +6,8 @@ Vue.component('site-navbar', {
   props: {
     site: {
       required: true
-  }
-},
+    }
+  },
   data: function() {
     return {
       user: null,
@@ -22,12 +22,6 @@ Vue.component('site-navbar', {
     },
   },
   created: function() {
-    console.log($("#navbar-"+this.site));
-    //$("#navbar-"+this.site).addClass("active")
-    $("#Hi").hide()
-    // TODO: Highlight active site
-    
-
     const auth = getAuth()
     onAuthStateChanged(auth, (user) => {
       console.log(user);
@@ -95,7 +89,6 @@ Vue.component('site-navbar', {
         </template>
       </div>
     </div>
-    <div id="Hi">{{ site }}</div>
   </nav>
   `
 })

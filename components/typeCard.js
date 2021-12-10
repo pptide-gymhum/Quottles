@@ -2,11 +2,12 @@
 Vue.component('type-card', {
   props: [
     "title",
-    "picturesrc"
+    "picturesrc",
+    "theme"
   ],
   methods: {
     link: function(){
-      document.location.href = "https://google.com"
+      document.location.href = "quotes.html?theme=" + this.theme
     }
   },
   template: `

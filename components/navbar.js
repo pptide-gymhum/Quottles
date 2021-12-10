@@ -49,14 +49,14 @@ Vue.component('site-navbar', {
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="quotes.html">Zitate</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=1">Serien/ Filme</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=2">von berühmten Personen</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=3">Liebe</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=4">Motivation</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=5">Depression</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=6">Sport</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=7">zu besonderen Anlässen</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=8">Glück</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=0">Serien/ Filme</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=1">von berühmten Personen</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=2">Liebe</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=3">Motivation</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=4">Depression</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=5">Sport</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=6">zu besonderen Anlässen</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=7">Glück</a></li>
             </ul>
           </li>
           <li class="nav-item">

@@ -44,24 +44,29 @@ Vue.component('site-navbar', {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id="navbar-homepage" class="nav-link" aria-current="page" href="index.html">Startseite</a>
+            <a class="nav-link" v-bind:class="{ active: site=='homepage' }" aria-current="page" href="index.html">
+              Startseite
+            </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="quotes.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" v-bind:class="{ active: site=='quotes' }" href="quotes.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Zitate
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="quotes.html">Zitate</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=1">Hallo</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=2">Hallöchen</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=3">Moin</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=4">Wroooomm</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=5">Tada</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=1">Serien/ Filme</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=2">von berühmten Personen</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=3">Liebe</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=4">Motivation</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=5">Depression</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=6">Sport</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=7">zu besonderen Anlässen</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=8">Glück</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="createaquote.html"><i class="far fa-plus-square"></i></a>
+            <a class="nav-link" v-bind:class="{ active: site=='createQuote' }" href="createaquote.html"><i class="far fa-plus-square"></i></a>
           </li>
         </ul>
         <form class="d-flex">

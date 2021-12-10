@@ -3,12 +3,14 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 
 // Define componetent Navbar
 Vue.component('site-navbar', {
-  props: [
-    "site"
-  ],
+  props: {
+    site: {
+      required: true
+  }
+},
   data: function() {
     return {
-      user: null
+      user: null,
     }
   },
   methods: {
@@ -20,10 +22,9 @@ Vue.component('site-navbar', {
     },
   },
   created: function() {
-    $(function(){
-      console.log($("#navbar-"+this.site));
-      $("#navbar-"+this.site).addClass("active")
-    })
+    console.log($("#navbar-"+this.site));
+    //$("#navbar-"+this.site).addClass("active")
+    $("#Hi").hide()
     // TODO: Highlight active site
     
 
@@ -89,6 +90,7 @@ Vue.component('site-navbar', {
         </template>
       </div>
     </div>
+    <div id="Hi">{{ site }}</div>
   </nav>
   `
 })

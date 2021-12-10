@@ -11,7 +11,7 @@ Vue.component('type-card', {
   },
   template: `
   <div class="col col-md-auto" @click="link">
-    <div class="card bg-dark text-white m-3" style="width: 15rem;">
+    <div class="card bg-dark text-white m-3" style="width: 15rem; cursor: pointer;">
       <img :src="picturesrc" class="card-img" alt="...">
       <div class="card-img-overlay">
         <h5 class="card-title" style="mix-blend-mode: difference;"> {{ title }} </h5>

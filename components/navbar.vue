@@ -1,39 +1,4 @@
-import { signIn, logOut } from "../firebase.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-
-// Define componetent Navbar
-Vue.component('site-navbar', {
-  props: [
-    "site"
-  ],
-  data: function() {
-    return {
-      user: null
-    }
-  },
-  methods: {
-    signIn: function() {
-      signIn()
-    },
-    signOut: function() {
-      logOut()
-    },
-  },
-  created: function() {
-    $(function(){
-      console.log($("#navbar-"+this.site));
-      $("#navbar-"+this.site).addClass("active")
-    })
-    // TODO: Highlight active site
-    
-
-    const auth = getAuth()
-    onAuthStateChanged(auth, (user) => {
-      console.log(user);
-      this.user = user
-    });
-  },
-  template: `
+<template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Quottle</a>
@@ -43,7 +8,7 @@ Vue.component('site-navbar', {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id="navbar-homepage" class="nav-link" aria-current="page" href="index.html">Startseite</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Startseite</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="quotes.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,11 +17,11 @@ Vue.component('site-navbar', {
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="quotes.html">Zitate</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=1">Hallo</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=2">Hallöchen</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=3">Moin</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=4">Wroooomm</a></li>
-              <li><a class="dropdown-item" href="quotes.html?theme=5">Tada</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=1">Thema 1</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=2">Thema 2</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=3">Thema 3</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=4">Thema 4</a></li>
+              <li><a class="dropdown-item" href="quotes.html?theme=5">Thema 5</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -90,5 +55,32 @@ Vue.component('site-navbar', {
       </div>
     </div>
   </nav>
-  `
-})
+</template>
+
+<script>
+import { signIn, logOut } from "../firebase.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+
+export default {
+  data: function() {
+    return {
+      user: null
+    }
+  },
+  methods: {
+    signIn: function() {
+      signIn()
+    },
+    signOut: function() {
+      logOut()
+    },
+  },
+  created: function() {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      this.user = user
+    });
+  },
+}
+</script>

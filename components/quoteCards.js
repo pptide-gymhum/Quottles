@@ -2,7 +2,6 @@
 Vue.component('quote-card', {
   props: [
     "title",
-    "content",
   ],
   template: `
   <div class="col col-md-auto">
@@ -10,7 +9,7 @@ Vue.component('quote-card', {
       <img src="https://via.placeholder.com/1500" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"> {{ title }}</h5>
-        <p class="card-text"> {{ content }} </p>
+        <p class="card-text"> <slot></slot> </p>
         <a href="#" class="btn btn-primary">Link oder so</a>
       </div>
     </div>

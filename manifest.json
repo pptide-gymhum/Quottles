@@ -1,0 +1,8 @@
+{
+  "name": "Quottle",
+  "short_name": "Quottle",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Eine Zitat Seite, auf der man Nutztererstellte Zitate sehen kann."
+}

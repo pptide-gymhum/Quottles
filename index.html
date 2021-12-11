@@ -5,34 +5,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Icons CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://kit.fontawesome.com/005c99de14.js" crossorigin="anonymous"></script>
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Custom Style for navbar login Area -->
+    <link rel="stylesheet" href="style.css">
 
-
-    <title>Lulu</title>
+    <title>Quottle</title>
   </head>
   <body>
     <div id="app">
-      <site-navbar></site-navbar>
+      <site-navbar site="homepage"></site-navbar>
+      <!-- Example Quotes -->
       <div class="row justify-content-md-center">
-        <quote-card title="1" content="WOW hier ist Inhalt"></quote-card>
-        <quote-card title="zwei" content="UwU ich bin süß"></quote-card>
-        <quote-card title="three" content="OMG SUPER INHALT MEGA HYPE"></quote-card>
-        <quote-card title="IV" content="blub"></quote-card>
+        <quote-card title="1">WOW hier ist Inhalt</quote-card>
+        <quote-card title="zwei">UwU ich bin süß</quote-card>
+        <quote-card title="three">OMG SUPER INHALT MEGA HYPE</quote-card>
+        <quote-card title="IV">blub</quote-card>
+        <quote-card title="Neu">Hallo</quote-card>
       </div>
+
+      <modal></modal>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Load Navbar Component-->
-    <script src="navbar.js"></script>
-    <script src="quoteCards.js"></script>
-    <script>
+
+    <!-- Initialize Firebase -->
+    <script src="firebase.js" type="module"></script>
+    <script src="quote.js" type="module"></script>
+    <!-- Load Components and initialize Vue -->
+    <script src="components/navbar.js" type="module"></script>
+    <script src="components/quoteCards.js" type="module"></script>
+    <script src="components/modal.js" type="module"></script>
+    <script type="module">
       var app = new Vue({el: '#app'})
     </script>
   </body>

@@ -1,11 +1,4 @@
-// Define componetent Navbar
-Vue.component('site-navbar', {
-  data: function () {
-    return {
-      //count: 0
-    }
-  },
-  template: `
+<template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Quottle</a>
@@ -39,10 +32,55 @@ Vue.component('site-navbar', {
           <input class="form-control me-2" type="search" placeholder="Suchen...">
           <button class="btn btn-outline-success me-3" type="submit">Suchen</button>
         </form>
-        <button class="btn btn-outline-success me-2" href="#" type="button">Registrieren</button>
-        <button class="btn btn-sm btn-outline-secondary" href="#" type="button">Anmelden</button>
+        <template v-if="!user">
+          <button class="btn btn-outline-success me-2" type="button" @click="signIn">Registrieren</button>
+          <button class="btn btn-sm btn-outline-secondary" type="button" @click="signIn">Anmelden</button>
+        </template>
+        <template v-else>
+          <!-- <button class="btn btn-sm btn-outline-secondary" type="button" @click="signOut">Abmelden</button> -->
+          <!-- https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=all-in-one-navbar -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a id="navbarLoginDropdown" role="button" data-bs-toggle="dropdown" class="nav-link dropdown-toggle"><img :src="user.photoURL" class="avatar" alt="Avatar"> {{ user.displayName }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user-o"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-calendar-o"></i> Calendar</a></li>
+                <li><a href="#"><i class="fa fa-sliders"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#" @click="signOut"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </template>
       </div>
     </div>
   </nav>
-  `
-})
+</template>
+
+<script>
+import { signIn, logOut } from "../firebase.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+
+export default {
+  data: function() {
+    return {
+      user: null
+    }
+  },
+  methods: {
+    signIn: function() {
+      signIn()
+    },
+    signOut: function() {
+      logOut()
+    },
+  },
+  created: function() {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      this.user = user
+    });
+  },
+}
+</script>

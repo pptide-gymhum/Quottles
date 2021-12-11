@@ -50,18 +50,14 @@
     <script src="components/typeCard.js" type="module"></script>
     <script src="components/modal.js" type="module"></script>
     <script type="module">
+      import { openQuotes } from "../quote.js";
+
       var app = new Vue({el: '#app'})
 
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const theme = urlParams.get('theme');
-      console.log(theme);
-      if (theme) {
-        $("#modalLabel").text(theme)
-        $("#modalBody").text(theme)
-        var quoteModal = new bootstrap.Modal($("#modal"), {})
-        quoteModal.show()
-      }
+      openQuotes(theme)
     </script>
   </body>
 </html>

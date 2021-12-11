@@ -25,6 +25,8 @@
     <div id="app">
       <site-navbar site="createQuote"></site-navbar>
       Zitat erstellen
+
+      <modal></modal>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
@@ -32,8 +34,10 @@
 
     <!-- Initialize Firebase -->
     <script src="firebase.js" type="module"></script>
+    <script src="quote.js" type="module"></script>
     <!-- Load Components and initialize Vue -->
     <script src="components/navbar.js" type="module"></script>
+    <script src="components/modal.js" type="module"></script>
     <script type="module">
       var app = new Vue({el: '#app'})
     </script>

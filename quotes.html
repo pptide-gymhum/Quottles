@@ -34,6 +34,9 @@
         <type-card title="zu besonderen Anlässen" picturesrc="Bilder/Party.jpg" theme=6>afasfefx</type-card>
         <type-card title="Glück" picturesrc="Bilder/Luck.jpg" theme=7>Magei</type-card>
       </div>
+
+      <modal name="Hi">Guten Tag</modal>
+
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
@@ -41,11 +44,24 @@
 
     <!-- Initialize Firebase -->
     <script src="firebase.js" type="module"></script>
+    <script src="quote.js" type="module"></script>
     <!-- Load Components and initialize Vue -->
     <script src="components/navbar.js" type="module"></script>
     <script src="components/typeCard.js" type="module"></script>
+    <script src="components/modal.js" type="module"></script>
     <script type="module">
       var app = new Vue({el: '#app'})
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const theme = urlParams.get('theme');
+      console.log(theme);
+      if (theme) {
+        $("#modalLabel").text(theme)
+        $("#modalBody").text(theme)
+        var quoteModal = new bootstrap.Modal($("#modal"), {})
+        quoteModal.show()
+      }
     </script>
   </body>
 </html>

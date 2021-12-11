@@ -1,3 +1,5 @@
+import { openQuotes } from "../quote.js";
+
 // Define componetent quote card
 Vue.component('type-card', {
   props: [
@@ -7,7 +9,7 @@ Vue.component('type-card', {
   ],
   methods: {
     link: function(){
-      document.location.href = "quotes.html?theme=" + this.theme
+      openQuotes(this.theme)
     }
   },
   template: `

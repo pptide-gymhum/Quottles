@@ -35,7 +35,7 @@ jobs:
           # Authenticate as this user to SMTP server
           username: github@pptie.de
           # Authenticate with this password to SMTP server
-          password: DiesIstEinPasswort
+          password: ${{ secrets.EMAIL_PASSWORD }}
           # Subject of mail message
           subject: Neuer Release
           # Recipients mail addresses (separated with comma)

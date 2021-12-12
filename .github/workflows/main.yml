@@ -1,0 +1,56 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: [release, workflow_dispatch]
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  mail:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r release.zip ./
+
+      # Runs a single command using the runners shell
+      - name: Send email
+        # You may pin to the exact commit or the version.
+        # uses: dawidd6/action-send-mail@ba46013833657153f91b33e0f111e15eb5574a82
+        uses: dawidd6/action-send-mail@v3.6.0
+        with:
+          # SMTP server address
+          server_address: smtp.strato.de
+          # SMTP server port
+          server_port: 465
+          # Authenticate as this user to SMTP server
+          username: github@pptie.de
+          # Authenticate with this password to SMTP server
+          password: DiesIstEinPasswort
+          # Subject of mail message
+          subject: Neuer Release
+          # Recipients mail addresses (separated with comma)
+          to: philipp.paul.tiede@gymhum.de
+          # Full name of mail sender (might be with an email address specified in <>)
+          from: Automatischer Email Sender <github@pptie.de>
+          # Whether this connection use TLS (default is true if server_port is 465)
+          secure: true
+          # Body of mail message (might be a filename prefixed with file:// to read from)
+          body: Siehe da
+          # Blind carbon copy recipients (separated with comma)
+          bcc: pptide@posteo.de
+          # An email address that will appear on the Reply-To field
+          reply_to: githubReply@pptie.de
+          # Convert body from Markdown to HTML (set content_type input as text/html too)
+          convert_markdown: false
+          # Files that will be added to mail message attachments (separated with comma)
+          attachments: ./release.zip

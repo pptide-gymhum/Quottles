@@ -2,9 +2,6 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://w
 //import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
-// Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 
 // Your web app's Firebase configuration

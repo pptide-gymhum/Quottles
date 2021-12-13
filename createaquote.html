@@ -40,7 +40,73 @@
   <body>
     <div id="app">
       <site-navbar site="createQuote"></site-navbar>
-      Zitat erstellen
+      <div class="mt-3 mx-auto" style="width: 87.5%;">
+        <div class="row">
+          <div class="col-xl-8 mb-2">
+            <label for="exampleFormControlTextarea1" class="form-label fs-3">Titel</label>
+            <input class="form-control form-control-lg mb-3" type="text" placeholder="Der Titel deines Zitats..." aria-label="Der Titel deines Zitats... example">
+            <label for="exampleFormControlTextarea1" class="form-label fs-3">Zitat</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Dein eigenes Zitat..." aria-label="Dein eigenes Zitat... example"></textarea>
+          </div>
+          <div class="col-md">
+            <label class="form-label fs-3">Thema</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector0" value="0">
+              <label class="form-check-label" for="themeSelector0">
+                Serien/Filme
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector1" value="1">
+              <label class="form-check-label" for="themeSelector1">
+                Von berühmten Personen
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector2" value="2">
+              <label class="form-check-label" for="themeSelector2">
+                Liebe
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector3" value="3">
+              <label class="form-check-label" for="themeSelector3">
+                Motivation
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector4" value="4">
+              <label class="form-check-label" for="themeSelector4">
+                Depression
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector5" value="5">
+              <label class="form-check-label" for="themeSelector5">
+                Sport
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector6" value="6">
+              <label class="form-check-label" for="themeSelector6">
+                Zu besonderen Anlässen
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector7" value="7">
+              <label class="form-check-label" for="themeSelector7">
+                Glück
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="themeSelector" id="themeSelector8" value="8">
+              <label class="form-check-label" for="themeSelector8">
+                Andere
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <modal></modal>
     </div>
@@ -50,12 +116,12 @@
 
     <!-- Initialize Firebase -->
     <script src="firebase.js" type="module"></script>
-    <script src="quote.js" type="module"></script>
     <!-- Load Components and initialize Vue -->
     <script src="components/navbar.js" type="module"></script>
     <script src="components/modal.js" type="module"></script>
     <script type="module">
       var app = new Vue({el: '#app'})
     </script>
+    <script src="quote.js" type="module"></script>
   </body>
 </html>

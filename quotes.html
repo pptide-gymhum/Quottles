@@ -60,15 +60,16 @@
 
     <!-- Initialize Firebase -->
     <script src="firebase.js" type="module"></script>
-    <script src="quote.js" type="module"></script>
     <!-- Load Components and initialize Vue -->
     <script src="components/navbar.js" type="module"></script>
     <script src="components/typeCard.js" type="module"></script>
     <script src="components/modal.js" type="module"></script>
     <script type="module">
-      import { openQuotes } from "../quote.js";
-
       var app = new Vue({el: '#app'})
+    </script>
+    <script src="quote.js" type="module"></script>
+    <script type="module">
+      import { openQuotes } from "../quote.js";
 
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);

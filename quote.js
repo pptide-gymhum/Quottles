@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"
+import { getFirestore, collection, getDoc, getDocs, doc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"
 
 var loading = false
 
@@ -17,28 +17,25 @@ export async function openQuotes(theme) {
   // change URL without reloading page
   history.pushState({}, "", "quotes.html?theme="+theme)
 
-  // const db = getFirestore();
-  // const querySnapshot = collection(db, "themes", String(theme));
+  const db = getFirestore();
+  const querySnapshot = doc(db, "themes", String(theme));
 
-  // var data = await getDocs(querySnapshot)
+  var data = await getDoc(querySnapshot)
 
-  // data.forEach(doc => {
-  //   $("#modalLabel").text(doc.data().name)
-  // })
+  $("#modalLabel").text(data.data().name)
 
 
   var data = await getData(theme)
 
   var dataText = ""
   data.forEach(doc => {
-    console.log(doc.data().created);
     dataText += `<a href='#' class='list-group-item list-group-item-action' aria-current='true'>
     <div class='d-flex w-100 justify-content-between'>
       <h5 class='mb-1'>`+doc.data().title+`</h5>
       <small>`+doc.data().created.toDate().toLocaleTimeString("de") + " " + doc.data().created.toDate().toLocaleDateString("de")+`</small>
     </div>
     <p class='mb-1'>`+doc.data().quote+`</p>
-    <small>And some small print.</small>
+    <small>`+doc.data().source+`</small>
   </a>`
   });
   $("#modalBody").html("<ul class='list-group'>" + dataText + "</ul>")
@@ -50,6 +47,5 @@ export async function openQuotes(theme) {
 async function getData(theme) {
   const db = getFirestore();
   const querySnapshot = collection(db, "themes", String(theme), "quotes");
-  console.log(await getDocs(querySnapshot));
   return await getDocs(querySnapshot)
 }

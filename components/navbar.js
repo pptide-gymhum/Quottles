@@ -28,7 +28,6 @@ Vue.component('site-navbar', {
   created: function() {
     const auth = getAuth()
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
       this.user = user
     });
   },

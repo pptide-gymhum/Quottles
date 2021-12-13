@@ -53,14 +53,15 @@ Vue.component('site-navbar', {
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="quotes.html">Zitate</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" @click="openQuotes(0)">Serien/ Filme</a></li>
-              <li><a class="dropdown-item" @click="openQuotes(1)">von berühmten Personen</a></li>
+              <li><a class="dropdown-item" @click="openQuotes(0)">Serien/Filme</a></li>
+              <li><a class="dropdown-item" @click="openQuotes(1)">Von berühmten Personen</a></li>
               <li><a class="dropdown-item" @click="openQuotes(2)">Liebe</a></li>
               <li><a class="dropdown-item" @click="openQuotes(3)">Motivation</a></li>
               <li><a class="dropdown-item" @click="openQuotes(4)">Depression</a></li>
               <li><a class="dropdown-item" @click="openQuotes(5)">Sport</a></li>
-              <li><a class="dropdown-item" @click="openQuotes(6)">zu besonderen Anlässen</a></li>
+              <li><a class="dropdown-item" @click="openQuotes(6)">Zu besonderen Anlässen</a></li>
               <li><a class="dropdown-item" @click="openQuotes(7)">Glück</a></li>
+              <li><a class="dropdown-item" @click="openQuotes(8)">Andere</a></li>
             </ul>
           </li>
           <li class="nav-item">

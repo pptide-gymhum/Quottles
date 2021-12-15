@@ -9,7 +9,7 @@ Vue.component('type-card', {
   ],
   methods: {
     link: function(){
-      openQuotes(this.theme)
+      openQuotes(parseInt(this.theme))
     }
   },
   template: `

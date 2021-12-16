@@ -34,7 +34,7 @@ export async function openQuotes(theme) {
   // and save all quote in a string made to html and loaded into the modal
   var dataText = ""
   data.forEach(doc => {
-    dataText += `<a href='#' class='list-group-item list-group-item-action' aria-current='true'>
+    dataText += `<a href='`+"quote.html?theme="+theme+"&post="+doc.id+`' class='list-group-item list-group-item-action' aria-current='true'>
     <div class='d-flex w-100 justify-content-between'>
       <h5 class='mb-1'>`+doc.data().title+`</h5>
       <small>`+doc.data().created.toDate().toLocaleTimeString("de") + " " + doc.data().created.toDate().toLocaleDateString("de")+`</small>

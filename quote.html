@@ -46,10 +46,10 @@
       <div class="row">
         <div class="col mt-5">
           <div class="card mx-auto" style="width: 30rem;">
-            <iframe class="card-img" src="https://www.youtube.com/embed/lL_CEWRcvnU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe v-if="isYoutube" class="card-img" :src="extenion" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">{{ title }}</h5>
+              <p class="card-text">{{ content }}</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
@@ -70,7 +70,27 @@
     <script src="components/quoteCards.js" type="module"></script>
     <script src="components/modal.js" type="module"></script>
     <script type="module">
-      var app = new Vue({el: '#app'})
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+      var app = new Vue({
+        el: '#app',
+        data: {
+          title: "",
+          content: "",
+          extenion: "",
+          isYoutube: false,
+        },
+      })
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const theme = urlParams.get('theme');
+      const post = urlParams.get("post")
+
+      const db = getFirestore();
+      const querySnapshot = doc(db, "themes", String(theme), "quotes", String(post));
+      var data = await getDoc(querySnapshot)
+
+      console.log(data)
     </script>
     <script src="quote.js" type="module"></script>
   </body>

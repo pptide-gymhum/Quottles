@@ -20,9 +20,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+// Initialize Firebase authentication
 const provider = new GoogleAuthProvider();
 const auth = getAuth()
 
+// Export a sign in function so it can be used in other scripts in one line. 
 export function signIn() {
   signInWithPopup(auth, provider)
   .then((result) => {
@@ -43,6 +45,7 @@ export function signIn() {
   });
 }
 
+// Export a log out function for the same reason stated above. 
 export function logOut() {
   signOut(auth).then(() => {
     // Sign-out successful.
@@ -50,9 +53,3 @@ export function logOut() {
     // An error happened.
   });
 }
-
-
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})

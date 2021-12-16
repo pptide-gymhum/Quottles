@@ -1,3 +1,4 @@
+// Create a Component wth Vue for a Bootstrap Modal
 Vue.component("modal",{
 	props:['name'],
 	template:`
@@ -13,7 +14,6 @@ Vue.component("modal",{
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

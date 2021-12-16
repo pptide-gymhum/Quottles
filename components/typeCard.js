@@ -1,6 +1,6 @@
 import { openQuotes } from "../quote.js";
 
-// Define componetent quote card
+// Create a Component wth Vue for a Card that contains a categorie of quotes
 Vue.component('type-card', {
   props: [
     "title",

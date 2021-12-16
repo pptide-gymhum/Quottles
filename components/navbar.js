@@ -2,18 +2,21 @@ import { signIn, logOut } from "../firebase.js";
 import { openQuotes } from "../quote.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 
-// Define componetent Navbar
+// Define the Vue Component for the Navbar.
 Vue.component('site-navbar', {
+  // arguments passed to the navbar
   props: {
     site: {
       required: true
     }
   },
+  // data used in the navbar
   data: function() {
     return {
       user: null,
     }
   },
+  // functions yoused in the navbar
   methods: {
     signIn: function() {
       signIn()
@@ -25,13 +28,14 @@ Vue.component('site-navbar', {
       openQuotes(theme)
     }
   },
+  // initialize the navbar
   created: function() {
     const auth = getAuth()
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
       this.user = user
     });
   },
+  // HTML template for the navbar (use of Vue syntax look below)
   template: `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -77,7 +81,7 @@ Vue.component('site-navbar', {
           <button class="btn btn-sm btn-outline-secondary" type="button" @click="signIn">Anmelden</button>
         </template>
         <template v-else>
-          <!-- <button class="btn btn-sm btn-outline-secondary" type="button" @click="signOut">Abmelden</button> -->
+          <!-- Login Menu von der Seite: -->
           <!-- https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=all-in-one-navbar -->
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -97,3 +101,7 @@ Vue.component('site-navbar', {
   </nav>
   `
 })
+
+// v-bind:class="{ active: site=='homepage' }"    if the argument site equals homepage use the class active.
+// @click="openQuotes(0)"                         when clicked run the function openQuotes with the argument 0
+// <template v-if="!user"></template>             Render only if there is no User loged in (<template> is hidden while rendering)

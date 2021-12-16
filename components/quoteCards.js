@@ -1,4 +1,4 @@
-// Define componetent quote card
+// Create a Component wth Vue for a Card that contains a Quote for the homepage
 Vue.component('quote-card', {
   props: [
     "title",

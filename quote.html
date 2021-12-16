@@ -46,11 +46,11 @@
       <div class="row">
         <div class="col mt-5">
           <div class="card mx-auto" style="width: 30rem;">
-            <iframe v-if="isYoutube" class="card-img" :src="extenion" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe v-if="isYoutube" class="card-img" :src="extension" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <img v-else class="card-img" :src="extension">
             <div class="card-body">
               <h5 class="card-title">{{ title }}</h5>
               <p class="card-text">{{ content }}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
@@ -70,13 +70,13 @@
     <script src="components/quoteCards.js" type="module"></script>
     <script src="components/modal.js" type="module"></script>
     <script type="module">
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
       var app = new Vue({
         el: '#app',
         data: {
           title: "",
           content: "",
-          extenion: "",
+          extension: "",
           isYoutube: false,
         },
       })
@@ -90,7 +90,17 @@
       const querySnapshot = doc(db, "themes", String(theme), "quotes", String(post));
       var data = await getDoc(querySnapshot)
 
-      console.log(data)
+      app.title = data.data().title
+      app.content = data.data().quote
+
+      const extensionURL = new URL(data.data().extension);
+      if(!(extensionURL.hostname == "youtube.com" || extensionURL.hostname == "www.youtube.com")) {
+        app.extension = extensionURL
+      } else {
+        app.isYoutube = true
+        app.extension = extensionURL.origin + "/embed/" + extensionURL.searchParams.get("v")
+      }
+      
     </script>
     <script src="quote.js" type="module"></script>
   </body>

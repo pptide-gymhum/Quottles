@@ -22,10 +22,10 @@ export async function saveContent() {
       title: title,
       extension: extension
     })
-    const title = $("#quoteTitle").val("")
-    const quote = $("#quoteContent").val("")
-    const source = $("#quoteSource").val("")
-    const extension = $("#quoteExtension").val("")
+    $("#quoteTitle").val("")
+    $("#quoteContent").val("")
+    $("#quoteSource").val("")
+    $("#quoteExtension").val("")
   } catch (e) {
     console.error("Error adding document: ", e);
   }
